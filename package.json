@@ -1,0 +1,21 @@
+{
+  "name": "kube-credential-system",
+  "version": "1.0.0",
+  "description": "Microservice-based credential issuance and verification system",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docker-compose up --build",
+    "test": "npm run test:services && npm run test:frontend",
+    "test:services": "cd services/issuance-service && npm test && cd ../verification-service && npm test",
+    "test:frontend": "cd frontend && npm test",
+    "build": "docker-compose build",
+    "deploy:k8s": "kubectl apply -f k8s/",
+    "clean": "docker-compose down -v && docker system prune -f"
+  },
+  "keywords": ["microservices", "kubernetes", "credentials", "typescript", "node.js", "react"],
+  "author": "Kube Credential Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

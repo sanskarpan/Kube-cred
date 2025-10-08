@@ -5,7 +5,6 @@ import { issuanceAPI, verificationAPI } from '../../config/api';
 
 // Mock axios
 jest.mock('axios');
-const _mockedAxios = axios as jest.Mocked<typeof axios>;
 
 // Mock the API instances
 jest.mock('../../config/api', () => ({

@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: issuance-service
+  namespace: kube-credential
+  labels:
+    app: kube-credential-system
+    service: issuance
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kube-credential-system
+      service: issuance
+  template:
+    metadata:
+      labels:
+        app: kube-credential-system
+        service: issuance
+    spec:
+      containers:
+      - name: issuance-service
+        image: your-registry/kube-credential-issuance:latest  # Replace with your image
+        ports:
+        - containerPort: 3001
+          protocol: TCP
+        env:
+        - name: PORT
+          value: "3001"
+        - name: DB_PATH
+          value: "/app/data/credentials.db"
+        - name: WORKER_ID
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        envFrom:
+        - configMapRef:
+            name: kube-credential-config
+        - secretRef:
+            name: kube-credential-secrets
+        volumeMounts:
+        - name: data-storage
+          mountPath: /app/data
+        - name: logs-storage
+          mountPath: /app/logs
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3001
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3001
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1001
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: false
+      volumes:
+      - name: data-storage
+        persistentVolumeClaim:
+          claimName: issuance-pvc
+      - name: logs-storage
+        emptyDir: {}
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 1001
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: issuance-service
+  namespace: kube-credential
+  labels:
+    app: kube-credential-system
+    service: issuance
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3001
+    targetPort: 3001
+    protocol: TCP
+    name: http
+  selector:
+    app: kube-credential-system
+    service: issuance
+

@@ -6,7 +6,7 @@ export const createRateLimiter = () => {
   return rateLimit({
     windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000'), // 15 minutes
     max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100'), // limit each IP to 100 requests per windowMs
-    message: (req: Request, res: Response) => {
+    message: (_req: Request, _res: Response) => {
       const workerId = process.env.WORKER_ID || 'unknown-worker';
       
       const response: ApiResponse = {

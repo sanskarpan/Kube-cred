@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-credential-config
+  namespace: kube-credential
+  labels:
+    app: kube-credential-system
+data:
+  # Common configuration
+  NODE_ENV: "production"
+  LOG_LEVEL: "info"
+  RATE_LIMIT_WINDOW_MS: "900000"
+  RATE_LIMIT_MAX_REQUESTS: "100"
+  
+  # Service URLs for inter-service communication
+  ISSUANCE_SERVICE_URL: "http://issuance-service:3001"
+  VERIFICATION_SERVICE_URL: "http://verification-service:3002"
+  
+  # Frontend environment variables
+  REACT_APP_ISSUANCE_SERVICE_URL: "https://your-domain.com/api/issuance"
+  REACT_APP_VERIFICATION_SERVICE_URL: "https://your-domain.com/api/verification"
+

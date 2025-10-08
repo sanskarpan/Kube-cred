@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { CredentialService } from '../../services/credentialService';
 import { Credential } from '../../types';
+import { issuanceAPI, verificationAPI } from '../../config/api';
 
 // Mock axios
 jest.mock('axios');
@@ -17,8 +18,6 @@ jest.mock('../../config/api', () => ({
     get: jest.fn(),
   },
 }));
-
-import { issuanceAPI, verificationAPI } from '../../config/api';
 
 describe('CredentialService', () => {
   beforeEach(() => {

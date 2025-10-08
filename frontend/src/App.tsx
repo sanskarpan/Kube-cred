@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import Layout from './components/Layout/Layout';
+import ErrorBoundary from './components/Common/ErrorBoundary';
 import HomePage from './pages/HomePage';
 import IssuePage from './pages/IssuePage';
 import VerifyPage from './pages/VerifyPage';
@@ -43,15 +44,17 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/issue" element={<IssuePage />} />
-            <Route path="/verify" element={<VerifyPage />} />
-          </Routes>
-        </Layout>
-      </Router>
+      <ErrorBoundary>
+        <Router>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/issue" element={<IssuePage />} />
+              <Route path="/verify" element={<VerifyPage />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </ErrorBoundary>
     </ThemeProvider>
   );
 }

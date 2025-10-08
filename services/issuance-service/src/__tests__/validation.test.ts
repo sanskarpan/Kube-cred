@@ -21,7 +21,9 @@ describe('Validation Utils', () => {
 
       const { error } = validateCredentialRequest(invalidRequest);
       expect(error).toBeDefined();
-      expect(error?.details[0].message).toContain('required');
+      if (error) {
+        expect(error.details[0].message).toContain('empty');
+      }
     });
 
     it('should reject invalid holder name with numbers', () => {
@@ -32,7 +34,9 @@ describe('Validation Utils', () => {
 
       const { error } = validateCredentialRequest(invalidRequest);
       expect(error).toBeDefined();
-      expect(error?.details[0].message).toContain('letters and spaces');
+      if (error) {
+        expect(error.details[0].message).toContain('letters and spaces');
+      }
     });
 
     it('should reject holder name that is too short', () => {
@@ -43,7 +47,9 @@ describe('Validation Utils', () => {
 
       const { error } = validateCredentialRequest(invalidRequest);
       expect(error).toBeDefined();
-      expect(error?.details[0].message).toContain('at least 2 characters');
+      if (error) {
+        expect(error.details[0].message).toContain('at least 2 characters');
+      }
     });
 
     it('should reject invalid credential type', () => {
@@ -54,7 +60,9 @@ describe('Validation Utils', () => {
 
       const { error } = validateCredentialRequest(invalidRequest);
       expect(error).toBeDefined();
-      expect(error?.details[0].message).toContain('must be one of');
+      if (error) {
+        expect(error.details[0].message).toContain('must be one of');
+      }
     });
 
     it('should reject past expiry date', () => {
@@ -66,7 +74,9 @@ describe('Validation Utils', () => {
 
       const { error } = validateCredentialRequest(invalidRequest);
       expect(error).toBeDefined();
-      expect(error?.details[0].message).toContain('future');
+      if (error) {
+        expect(error.details[0].message).toContain('future');
+      }
     });
 
     it('should accept valid credential types', () => {

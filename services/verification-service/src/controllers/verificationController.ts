@@ -28,7 +28,7 @@ export class VerificationController {
   /**
    * Verify a credential
    */
-  static verifyCredential = asyncHandler(async (req: Request, res: Response) => {
+  static verifyCredential = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const workerId = process.env.WORKER_ID || `worker-${Math.floor(Math.random() * 1000)}`;
     
     // Validate request body
@@ -41,7 +41,8 @@ export class VerificationController {
         worker_id: workerId,
         timestamp: new Date().toISOString()
       };
-      return res.status(400).json(response);
+      res.status(400).json(response);
+      return;
     }
 
     const verificationRequest: VerificationRequest = value;
@@ -87,7 +88,7 @@ export class VerificationController {
   /**
    * Get verification by ID
    */
-  static getVerification = asyncHandler(async (req: Request, res: Response) => {
+  static getVerification = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const workerId = process.env.WORKER_ID || 'unknown-worker';
     const { id } = req.params;
 
@@ -105,7 +106,8 @@ export class VerificationController {
           worker_id: workerId,
           timestamp: new Date().toISOString()
         };
-        return res.status(404).json(response);
+        res.status(404).json(response);
+        return;
       }
 
       const response: ApiResponse = {
@@ -126,7 +128,7 @@ export class VerificationController {
   /**
    * Get verifications by credential ID
    */
-  static getVerificationsByCredentialId = asyncHandler(async (req: Request, res: Response) => {
+  static getVerificationsByCredentialId = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const workerId = process.env.WORKER_ID || 'unknown-worker';
     const { credentialId } = req.params;
 
@@ -159,7 +161,7 @@ export class VerificationController {
   /**
    * Get all verifications with pagination
    */
-  static getAllVerifications = asyncHandler(async (req: Request, res: Response) => {
+  static getAllVerifications = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const workerId = process.env.WORKER_ID || 'unknown-worker';
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 10;
@@ -197,7 +199,7 @@ export class VerificationController {
   /**
    * Health check endpoint
    */
-  static healthCheck = asyncHandler(async (req: Request, res: Response) => {
+  static healthCheck = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const workerId = process.env.WORKER_ID || 'unknown-worker';
     const uptime = process.uptime();
 

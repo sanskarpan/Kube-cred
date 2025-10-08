@@ -9,7 +9,7 @@ export class CredentialController {
   /**
    * Issue a new credential
    */
-  static issueCredential = asyncHandler(async (req: Request, res: Response) => {
+  static issueCredential = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const workerId = process.env.WORKER_ID || `worker-${Math.floor(Math.random() * 1000)}`;
     
     // Validate request body
@@ -22,7 +22,8 @@ export class CredentialController {
         worker_id: workerId,
         timestamp: new Date().toISOString()
       };
-      return res.status(400).json(response);
+      res.status(400).json(response);
+      return;
     }
 
     const credentialRequest: CreateCredentialRequest = value;
@@ -34,7 +35,7 @@ export class CredentialController {
         credentialRequest.credential_type
       );
 
-      if (existingCredential) {
+        if (existingCredential) {
         const response: ApiResponse = {
           success: false,
           message: `Credential of type '${credentialRequest.credential_type}' already issued for ${credentialRequest.holder_name}`,
@@ -46,7 +47,8 @@ export class CredentialController {
           worker_id: workerId,
           timestamp: new Date().toISOString()
         };
-        return res.status(409).json(response);
+        res.status(409).json(response);
+        return;
       }
 
       // Create new credential
@@ -76,7 +78,7 @@ export class CredentialController {
   /**
    * Get credential by ID
    */
-  static getCredential = asyncHandler(async (req: Request, res: Response) => {
+  static getCredential = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const workerId = process.env.WORKER_ID || 'unknown-worker';
     const { id } = req.params;
 
@@ -94,7 +96,8 @@ export class CredentialController {
           worker_id: workerId,
           timestamp: new Date().toISOString()
         };
-        return res.status(404).json(response);
+        res.status(404).json(response);
+        return;
       }
 
       // Verify credential integrity
@@ -123,7 +126,7 @@ export class CredentialController {
   /**
    * Get all credentials with pagination
    */
-  static getAllCredentials = asyncHandler(async (req: Request, res: Response) => {
+  static getAllCredentials = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const workerId = process.env.WORKER_ID || 'unknown-worker';
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 10;
@@ -161,7 +164,7 @@ export class CredentialController {
   /**
    * Health check endpoint
    */
-  static healthCheck = asyncHandler(async (req: Request, res: Response) => {
+  static healthCheck = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const workerId = process.env.WORKER_ID || 'unknown-worker';
     const uptime = process.uptime();
 

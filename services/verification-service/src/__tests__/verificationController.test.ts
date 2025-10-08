@@ -34,7 +34,7 @@ describe('Verification Controller', () => {
 
   describe('POST /api/verifications', () => {
     const mockCredential = {
-      id: 'test-id',
+      id: '550e8400-e29b-41d4-a716-446655440000',
       holder_name: 'John Doe',
       issuer: 'Kube Credential Authority',
       issued_date: '2024-01-01T00:00:00.000Z',
@@ -49,7 +49,7 @@ describe('Verification Controller', () => {
     it('should verify a valid credential successfully', async () => {
       const mockVerificationResult = {
         id: 'verification-id',
-        credential_id: 'test-id',
+        credential_id: '550e8400-e29b-41d4-a716-446655440000',
         is_valid: true,
         is_expired: false,
         verification_status: 'valid',
@@ -104,7 +104,7 @@ describe('Verification Controller', () => {
     it('should retrieve a verification by ID', async () => {
       const mockVerification = {
         id: 'verification-id',
-        credential_id: 'test-id',
+        credential_id: '550e8400-e29b-41d4-a716-446655440000',
         is_valid: true,
         verification_status: 'valid'
       };

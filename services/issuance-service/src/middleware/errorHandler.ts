@@ -19,7 +19,7 @@ export const errorHandler = (
   err: Error | AppError,
   req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ): void => {
   const workerId = process.env.WORKER_ID || 'unknown-worker';
   

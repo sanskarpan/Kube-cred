@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { CredentialService } from '../../services/credentialService';
 import { Credential } from '../../types';
 import { issuanceAPI, verificationAPI } from '../../config/api';

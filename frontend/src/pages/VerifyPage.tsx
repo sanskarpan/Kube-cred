@@ -10,8 +10,7 @@ import {
   Alert,
   Divider,
   Chip,
-  Grid,
-  Paper
+  Grid
 } from '@mui/material';
 import {
   VerifiedUser as VerifiedIcon,
@@ -145,7 +144,7 @@ const VerifyPage: React.FC = () => {
           <Chip
             label={getVerificationStatusMessage(verificationResult.verification_status)}
             color={getVerificationStatusColor(verificationResult.verification_status)}
-            size="large"
+            size="medium"
             sx={{ fontSize: '1rem', py: 2 }}
           />
         </Box>

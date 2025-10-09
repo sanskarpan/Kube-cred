@@ -71,8 +71,8 @@ export class VerificationModel {
       verification_status: verificationStatus,
       verified_by: workerId,
       verified_at: now,
-      issuer_worker_id: issuerWorkerId,
-      issued_date: issuedDate,
+      ...(issuerWorkerId && { issuer_worker_id: issuerWorkerId }),
+      ...(issuedDate && { issued_date: issuedDate }),
       created_at: now
     };
 

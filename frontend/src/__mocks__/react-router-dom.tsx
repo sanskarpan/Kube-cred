@@ -15,3 +15,4 @@ export const Route = ({ element }: { element: React.ReactNode }) => (
 export const useNavigate = () => jest.fn();
 export const useLocation = () => ({ pathname: '/' });
 export const useParams = () => ({});
+

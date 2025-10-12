@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Typography,
   Box,
-  Grid,
   Card,
   CardContent,
   CardActions,
@@ -11,6 +10,7 @@ import {
   Divider,
   Alert
 } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import {
   Assignment as AssignmentIcon,
   VerifiedUser as VerifiedIcon,

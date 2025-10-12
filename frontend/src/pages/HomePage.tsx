@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Typography,
   Box,
+  Grid,
   Card,
   CardContent,
   CardActions,
@@ -10,7 +11,6 @@ import {
   Divider,
   Alert
 } from '@mui/material';
-import Grid from '@mui/material/Grid2';
 import {
   Assignment as AssignmentIcon,
   VerifiedUser as VerifiedIcon,
@@ -97,7 +97,7 @@ const HomePage: React.FC = () => {
 
       {/* Action Cards */}
       <Grid container spacing={4} sx={{ mb: 6 }}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card
             sx={{
               height: '100%',
@@ -140,7 +140,7 @@ const HomePage: React.FC = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card
             sx={{
               height: '100%',
@@ -191,7 +191,7 @@ const HomePage: React.FC = () => {
           System Features
         </Typography>
         <Grid container spacing={3} sx={{ mt: 2 }}>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Box sx={{ p: 2 }}>
               <CloudIcon sx={{ fontSize: 40, color: 'primary.main', mb: 1 }} />
               <Typography variant="h6" gutterBottom>
@@ -202,7 +202,7 @@ const HomePage: React.FC = () => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Box sx={{ p: 2 }}>
               <SecurityIcon sx={{ fontSize: 40, color: 'primary.main', mb: 1 }} />
               <Typography variant="h6" gutterBottom>
@@ -213,7 +213,7 @@ const HomePage: React.FC = () => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Box sx={{ p: 2 }}>
               <AssignmentIcon sx={{ fontSize: 40, color: 'primary.main', mb: 1 }} />
               <Typography variant="h6" gutterBottom>
@@ -224,7 +224,7 @@ const HomePage: React.FC = () => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Box sx={{ p: 2 }}>
               <VerifiedIcon sx={{ fontSize: 40, color: 'primary.main', mb: 1 }} />
               <Typography variant="h6" gutterBottom>

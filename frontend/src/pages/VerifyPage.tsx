@@ -151,7 +151,7 @@ const VerifyPage: React.FC = () => {
 
         <Grid container spacing={3} sx={{ mb: 4 }}>
           {/* Credential Information */}
-          <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Card elevation={3}>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -210,7 +210,7 @@ const VerifyPage: React.FC = () => {
           </Grid>
 
           {/* Verification Results */}
-          <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Card elevation={3}>
               <CardContent>
                 <Typography variant="h6" gutterBottom>

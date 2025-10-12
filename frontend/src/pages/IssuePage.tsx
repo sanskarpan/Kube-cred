@@ -122,7 +122,7 @@ const IssuePage: React.FC = () => {
             <Divider sx={{ mb: 2 }} />
             
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <Typography variant="body2" color="text.secondary">
                   Credential ID
                 </Typography>
@@ -131,7 +131,7 @@ const IssuePage: React.FC = () => {
                 </Typography>
               </Grid>
               
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <Typography variant="body2" color="text.secondary">
                   Holder Name
                 </Typography>
@@ -140,7 +140,7 @@ const IssuePage: React.FC = () => {
                 </Typography>
               </Grid>
               
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <Typography variant="body2" color="text.secondary">
                   Credential Type
                 </Typography>
@@ -152,7 +152,7 @@ const IssuePage: React.FC = () => {
                 />
               </Grid>
               
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <Typography variant="body2" color="text.secondary">
                   Issued By
                 </Typography>
@@ -161,7 +161,7 @@ const IssuePage: React.FC = () => {
                 </Typography>
               </Grid>
               
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <Typography variant="body2" color="text.secondary">
                   Issued Date
                 </Typography>
@@ -170,7 +170,7 @@ const IssuePage: React.FC = () => {
                 </Typography>
               </Grid>
               
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <Typography variant="body2" color="text.secondary">
                   Expiry Date
                 </Typography>
@@ -233,7 +233,7 @@ const IssuePage: React.FC = () => {
         <form onSubmit={handleSubmit}>
           <CardContent sx={{ p: 4 }}>
             <Grid container spacing={3}>
-              <Grid item xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <TextField
                   fullWidth
                   label="Holder Name"
@@ -246,7 +246,7 @@ const IssuePage: React.FC = () => {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <FormControl fullWidth error={!!errors.credential_type}>
                   <InputLabel>Credential Type</InputLabel>
                   <Select
@@ -270,7 +270,7 @@ const IssuePage: React.FC = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   type="date"

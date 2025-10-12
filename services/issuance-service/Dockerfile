@@ -1,6 +1,9 @@
 # Multi-stage build for production optimization
 FROM node:18-alpine AS builder
 
+# Install build dependencies for sqlite3
+RUN apk add --no-cache python3 make g++
+
 # Set working directory
 WORKDIR /app
 
@@ -8,8 +11,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY tsconfig.json ./
 
-# Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+# Install ALL dependencies (including dev for building)
+RUN npm install --legacy-peer-deps && npm cache clean --force
 
 # Copy source code
 COPY src/ ./src/
@@ -31,7 +34,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install only production dependencies
-RUN npm ci --only=production && npm cache clean --force
+RUN npm install --only=production --legacy-peer-deps && npm cache clean --force
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist ./dist

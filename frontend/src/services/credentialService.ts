@@ -14,9 +14,19 @@ export class CredentialService {
    */
   static async issueCredential(request: CreateCredentialRequest): Promise<Credential> {
     try {
+      // Remove empty expiry_date if present
+      const payload: any = {
+        holder_name: request.holder_name,
+        credential_type: request.credential_type
+      };
+      
+      if (request.expiry_date && request.expiry_date.trim() !== '') {
+        payload.expiry_date = request.expiry_date;
+      }
+      
       const response: AxiosResponse<ApiResponse<Credential>> = await issuanceAPI.post(
         '/api/credentials',
-        request
+        payload
       );
 
       if (!response.data.success) {

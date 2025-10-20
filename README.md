@@ -2,7 +2,7 @@
 
 A production-ready microservice-based digital credential issuance and verification platform built with Node.js, TypeScript, React, and Kubernetes.
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 The Kube Credential System consists of three main components:
 

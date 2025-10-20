@@ -51,7 +51,7 @@ The Kube Credential System consists of three main components:
 - Kubernetes cluster (for production deployment)
 - AWS CLI (for AWS deployment)
 
-## 🛠️ Quick Start
+## Quick Start
 
 ### Local Development with Docker Compose
 

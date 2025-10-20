@@ -27,7 +27,7 @@ The Kube Credential System consists of three main components:
                     └─────────────────┘
 ```
 
-## 🚀 Features
+## Features
 
 ### Core Functionality
 - **Secure Credential Issuance**: Create digitally signed credentials with cryptographic integrity

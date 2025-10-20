@@ -44,7 +44,7 @@ The Kube Credential System consists of three main components:
 - **Comprehensive Testing**: Unit, integration, and API tests
 - **Modern UI**: Material-UI React frontend with responsive design
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Node.js 18+
 - Docker & Docker Compose

@@ -57,7 +57,7 @@ The Kube Credential System consists of three main components:
 
 1. **Clone and setup**:
 ```bash
-git clone <repository-url>
+git clone https://github.com/sanskarpan/Kube-cred
 cd kube-cred
 ```
 
@@ -105,7 +105,7 @@ cd frontend
 npm start
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Run All Tests
 ```bash
@@ -129,7 +129,7 @@ cd frontend
 npm test
 ```
 
-## 📦 API Documentation
+## API Documentation
 
 ### Credential Issuance Service (Port 3001)
 
@@ -228,7 +228,7 @@ GET /health
 
 Both services provide health check endpoints that return service status, uptime, database connectivity, and worker information.
 
-## 🚀 Deployment
+## Deployment
 
 ### Kubernetes Deployment
 
@@ -295,7 +295,7 @@ docker push your-registry/kube-credential-frontend:latest
 kubectl apply -f k8s/
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -318,7 +318,7 @@ kubectl apply -f k8s/
 - `REACT_APP_ISSUANCE_SERVICE_URL`: Issuance service API URL
 - `REACT_APP_VERIFICATION_SERVICE_URL`: Verification service API URL
 
-## 🔒 Security Considerations
+## Security Considerations
 
 ### Production Security Checklist
 - [ ] Change default JWT_SECRET
@@ -338,7 +338,7 @@ kubectl apply -f k8s/
 - **Non-root Containers**: All containers run as non-root users
 - **Network Policies**: Kubernetes network segmentation
 
-## 📊 Monitoring & Observability
+## Monitoring & Observability
 
 ### Health Checks
 All services provide `/health` endpoints with:
@@ -359,7 +359,7 @@ All services provide `/health` endpoints with:
 - Application performance metrics
 - Auto-scaling based on CPU/memory usage
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -368,11 +368,7 @@ All services provide `/health` endpoints with:
 5. Ensure all tests pass
 6. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -410,16 +406,4 @@ kubectl get endpoints -n kube-credential
 # Test service connectivity
 kubectl exec -it pod-name -n kube-credential -- wget -qO- http://service-name:port/health
 ```
-
-## 📞 Support
-
-For issues and questions:
-1. Check the troubleshooting section
-2. Review the logs for error messages
-3. Check Kubernetes events: `kubectl get events -n kube-credential`
-4. Create an issue in the repository with detailed information
-
----
-
-**Built with ❤️ for secure, scalable credential management**
 
